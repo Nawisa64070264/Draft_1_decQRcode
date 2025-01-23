@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Farmer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        .qr-container {
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Generate QR Code</h1>
+        <form method="POST">
+            <input type="text" name="tank_id" placeholder="Tank ID" required><br>
+            <input type="date" name="production_date" placeholder="Production Date" required><br>
+            <input type="text" name="farmer_id" placeholder="Farmer ID" required><br>
+            <input type="text" name="destination_factory" placeholder="Destination Factory" required><br>
+            <button type="submit">Generate QR Code</button>
+        </form>
+        {% if qrcode_image %}
+        <img src="data:image/png;base64,{{ qrcode_image }}" alt="QR Code" style="height: auto;">
+        {% endif %}
+        {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
+

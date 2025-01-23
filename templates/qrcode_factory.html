@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>สร้าง QR Code สำหรับ Factory</title>
+</head>
+<body>
+    <h1>QR Code สำหรับ Factory</h1>
+    <form method="POST">
+        <label>Lot ID:</label><br>
+        <input type="text" name="lot_id"><br><br>
+        <label>วันที่ผลิต:</label><br>
+        <input type="date" name="production_date"><br><br>
+        <label>วันหมดอายุ:</label><br>
+        <input type="date" name="expiration_date"><br><br>
+        <label>Factory ID:</label><br>
+        <input type="text" name="factory_id"><br><br>
+        <input type="submit" value="สร้าง QR Code">
+    </form>
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% elif qrcode_image %}
+        <img src="data:image/png;base64,{{ qrcode_image }}" alt="QR Code" style="height: auto;">
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>สร้าง QR Code สำหรับ Customer</title>
+</head>
+<body>
+    <h1>QR Code สำหรับ Customer</h1>
+    <form method="POST">
+        <label>Lot ID:</label><br>
+        <input type="text" name="lot_id"><br><br>
+        <label>ชื่อผลิตภัณฑ์:</label><br>
+        <input type="text" name="product_name"><br><br>
+        <label>URL สำหรับข้อมูลเพิ่มเติม:</label><br>
+        <input type="url" name="url"><br><br>
+        <input type="submit" value="สร้าง QR Code">
+    </form>
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% elif qrcode_image %}
+        <img src="data:image/png;base64,{{ qrcode_image }}" alt="QR Code">
+    {% endif %}
+</body>
+</html>
